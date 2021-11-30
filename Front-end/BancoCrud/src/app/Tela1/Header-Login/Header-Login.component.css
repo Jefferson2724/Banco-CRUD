@@ -1,0 +1,49 @@
+header {
+    display: flex;
+    justify-content: space-between;
+
+    height: 120px;
+    padding: 30px 15px;
+
+    border-bottom: 2px solid black;
+}
+
+.logo{
+    flex: 1;
+    display: flex;
+}
+
+.login {
+    flex: 1;
+    text-align: center;
+}
+
+.login form {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.conteudo-campos{
+    margin-bottom: 5px;
+}
+
+.conteudo-botao{
+    display: flex;
+    justify-content: center;
+    margin-left: 40px;
+}
+
+.botao-entrar{
+    padding:5px;
+    width: 150px;
+    float: right;
+    text-align: center;
+
+    background-color: blue;
+    color: white;
+
+    border-radius: 10px;
+
+}

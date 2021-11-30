@@ -1,0 +1,11 @@
+.recipiente-Cadastro-Termos {
+    display: flex;
+}
+
+.termos {
+    flex: 1;
+}
+
+.cadastro {
+    flex: 1;
+}
