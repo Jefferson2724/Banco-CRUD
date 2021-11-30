@@ -7,22 +7,25 @@
     <img> <span>Vai ser uma imagem</span>
   </div>
   <div class="login">
-    <form>
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+
       <div class="conteudo-campos">
         <div class="email">
-          <label for="senha">Email: </label>
-          <input type="text" name="senha">
+          <label for="email">Email: </label>
+          <input type="email" name="email" id="email" ngModel>
         </div>
+
         <div class="senha">
           <label for="senha">Senha: </label>
-          <input type="password" name=senha>
+          <input type="password" name="senha" id="senha" ngModel>
         </div>
+        
+        <div class="conteudo-botao">
+          <button type="submit" class="botao-entrar">
+            Entrar
+          </button>
+        </div>  
       </div>
-      <div class="conteudo-botao">
-        <button class="botao-entrar">
-          Entrar
-        </button>
-      </div>  
     </form>  
   </div>
 </header>
