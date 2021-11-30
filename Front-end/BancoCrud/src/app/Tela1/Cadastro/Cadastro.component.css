@@ -6,6 +6,33 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
     text-align: center;
+}
+
+.cabecalho-cadastro{
+    margin-top: 40px;
+}
+
+.form-cadastro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-cadastro div {
+    margin-bottom: 40px;
+}
+
+.form-cadastro div:nth-child(1){
+    margin-top: 80px;
+}
+
+.botao-cadastrar {
+    padding:5px;
+    text-align: center;
+
+    background-color: blue;
+    color: white;
+
+    border-radius: 10px;
 }

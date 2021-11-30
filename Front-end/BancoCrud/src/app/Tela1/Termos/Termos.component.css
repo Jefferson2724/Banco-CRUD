@@ -3,7 +3,7 @@
     border: 5px solid black;
 
     height: 75%;
-    width: 90%;
+    width: 70%;
 
     display: flex;
     flex-direction: column;
@@ -12,6 +12,7 @@
 }
 
 .conteudo-termos{
+    padding: 10px;
     width: 60%;
     height: 70%;
 
@@ -24,5 +25,5 @@
 }
 
 .texto-termos {
-    width: 100%;
+    word-wrap: break-word;
 }

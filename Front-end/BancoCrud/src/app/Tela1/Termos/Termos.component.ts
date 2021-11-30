@@ -11,8 +11,8 @@ export class TermosComponent implements OnInit {
 
   ngOnInit() {
     this.textoLoreImpsum = "sakasdka´dápskdasapsdad" +
-    "aodahsioudjhoasdaakd" +
-    "asjdnhoasjdoada" +
+    "aodahsioudjhoasdaakd " +
+    "asjdnhoasjdoada " +
     "asdjo";
   }
 
