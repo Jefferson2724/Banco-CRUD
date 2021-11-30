@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DadosLogin } from 'src/app/models/dadosLogin';
+import { ContaService } from 'src/app/services/conta.service';
 
 @Component({
   selector: 'app-Header-Login',
@@ -11,7 +12,8 @@ export class HeaderLoginComponent implements OnInit {
 
   dadosUsuario: DadosLogin;
 
-  constructor() { }
+  constructor(
+    private contaService:ContaService) { }
 
   ngOnInit() {
   }
@@ -22,6 +24,7 @@ export class HeaderLoginComponent implements OnInit {
     }
 
     this.inserirDadosVar(form)
+    this.contaService.loginUsuario(this.dadosUsuario);
 
     console.log(form);
   }
