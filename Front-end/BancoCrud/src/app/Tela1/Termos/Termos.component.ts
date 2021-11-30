@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./Termos.component.css']
 })
 export class TermosComponent implements OnInit {
-
+  textoLoreImpsum: String;
   constructor() { }
 
   ngOnInit() {
+    this.textoLoreImpsum = "sakasdka´dápskdasapsdad" +
+    "aodahsioudjhoasdaakd" +
+    "asjdnhoasjdoada" +
+    "asdjo";
   }
 
+  validCheckbox(){
+    debugger;
+  }
 }

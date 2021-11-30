@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./Cadastro.component.css']
 })
 export class CadastroComponent implements OnInit {
+  textoLoreImpsum:String;
 
   constructor() { }
 
