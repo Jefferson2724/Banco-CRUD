@@ -5,6 +5,7 @@ import { ConfirmarReq } from '../models/confirmarReq';
 import { DadosLogin } from '../models/dadosLogin';
 import { BehaviorSubject } from 'rxjs';
 import { ReturnStatement } from '@angular/compiler';
+import { CadastroConta } from '../models/cadastroConta';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,22 @@ export class ContaService {
     let params:HttpParams;
 
     this.httpClient.get<ConfirmarReq>(`${this.url}/login`, {observe: 'response', params: params}).subscribe(
+      response => {
+        respostaLogin.next(response.body);
+      },
+      error => {
+        console.log("Houve algum erro");
+        return;
+      }
+    );
+  
+    return respostaLogin.asObservable();
+  }
+
+  cadastroUsuario(dadosUsuario:CadastroConta){
+    let respostaLogin: BehaviorSubject<ConfirmarReq> = new BehaviorSubject(undefined);
+
+    this.httpClient.post<ConfirmarReq>(`${this.url}/register`,dadosUsuario, {observe: 'response'}).subscribe(
       response => {
         respostaLogin.next(response.body);
       },

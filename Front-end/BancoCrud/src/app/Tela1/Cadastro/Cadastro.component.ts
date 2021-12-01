@@ -14,7 +14,8 @@ export class CadastroComponent implements OnInit {
 
   constructor(
     private contaService:ContaService,
-    private dadosCadastro:CadastroConta) { }
+    private dadosCadastro:CadastroConta
+    ) { }
 
   ngOnInit() {
     
@@ -37,6 +38,8 @@ export class CadastroComponent implements OnInit {
     }
 
     this.inserirDadosCadastro(form);
+
+    this.contaService.cadastroUsuario(this.dadosCadastro);
 
   }
 
