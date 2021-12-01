@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-Termos',
@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TermosComponent implements OnInit {
   textoLoreImpsum: String;
+  checkBoxTerm: boolean = false;
+
+  @Output() checkBoxValido:EventEmitter<any> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
@@ -17,6 +21,9 @@ export class TermosComponent implements OnInit {
   }
 
   validCheckbox(){
-    debugger;
+    this.checkBoxTerm = !this.checkBoxTerm;
+    console.log(this.checkBoxTerm);
+
+    this.checkBoxValido.emit(this.checkBoxTerm);
   }
 }

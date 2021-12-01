@@ -2,9 +2,9 @@
 
 <article class="recipiente-Cadastro-Termos">
   <div class="termos">
-    <app-Termos></app-Termos>
+    <app-Termos (checkBoxValido)="validarCheckBox($event)"></app-Termos>
   </div>
   <div class="cadastro">
-    <app-Cadastro></app-Cadastro>
+    <app-Cadastro [check]="checkValue"></app-Cadastro>
   </div>
 </article>
