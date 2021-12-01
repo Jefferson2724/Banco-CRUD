@@ -2,42 +2,42 @@
   <div class="cabecalho-cadastro">
     <h1>Area de cadastro</h1>
   </div>
-  <form class="form-cadastro">
+  <form class="form-cadastro" (ngSubmit)="onSubmit(form)" #form="ngForm">
     <div>
       <label for="nome">Nome: </label>
-      <input type="text" name="nome">
+      <input type="text" name="nome" ngModel>
     </div>
 
     <div>
       <label for="email">Email: </label>
-      <input type="text" name="email">
+      <input type="text" name="email" ngModel>
     </div> 
 
     <div>  
       <label for="cep">CEP: </label>
-      <input type="text" name="cep">
+      <input type="text" name="cep" ngModel>
     </div>   
 
     <div>
       <label for="cpf">CPF: </label>
-      <input type="text" name="cpf" >
+      <input type="text" name="cpf" ngModel>
     </div>
 
     <div>
       <label for="idade">Idade: </label>
-      <input type="text" name="idade" >
+      <input type="text" name="idade" ngModel>
     </div>   
 
     <div>
-      <label for="senha">SENHA: </label>
-      <input type="text" name="senha" >
+      <label for="senha">Senha: </label>
+      <input type="text" name="senha" ngModel>
     </div> 
       
     <div>
       <label for="rep-senha">Repita a senha: </label>
-      <input type="text" name="rep-senha" >  
+      <input type="text" name="rep-senha" ngModel>  
     </div>  
 
-    <button class="botao-cadastrar" >Cadastrar-se</button>
+    <button type="submit" class="botao-cadastrar">Cadastrar-se</button>
   </form>
 </div>

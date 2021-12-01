@@ -13,6 +13,7 @@ import { CadastroComponent } from './Tela1/Cadastro/Cadastro.component';
 import { ContaService } from './services/conta.service';
 import { DadosLogin } from './models/dadosLogin';
 import { ConfirmarReq } from './models/confirmarReq';
+import { CadastroConta } from './models/cadastroConta';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ConfirmarReq } from './models/confirmarReq';
     DadosLogin,
     ConfirmarReq,
     ContaService,
+    CadastroConta,
   ],
   bootstrap: [AppComponent]
 })
