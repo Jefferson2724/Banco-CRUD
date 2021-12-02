@@ -45,5 +45,18 @@ header {
     color: white;
 
     border-radius: 10px;
+}
 
+.recipiente-Cadastro-Termos {
+    display: flex;
+    height: 700px;
+}
+
+.termos {
+    flex: 1;
+    height: 100%;
+}
+
+.cadastro {
+    flex: 1;
 }

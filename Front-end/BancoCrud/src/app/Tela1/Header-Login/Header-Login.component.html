@@ -29,3 +29,12 @@
     </form>  
   </div>
 </header>
+
+<article class="recipiente-Cadastro-Termos">
+  <div class="termos">
+    <app-Termos (checkBoxValido)="validarCheckBox($event)"></app-Termos>
+  </div>
+  <div class="cadastro">
+    <app-Cadastro [check]="checkValue"></app-Cadastro>
+  </div>
+</article>
