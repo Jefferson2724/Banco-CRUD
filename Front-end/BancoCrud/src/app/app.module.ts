@@ -13,6 +13,7 @@ import { TermosComponent } from './Tela1/Termos/Termos.component';
 import { CadastroComponent } from './Tela1/Cadastro/Cadastro.component';
 import { PerfilComponent } from './Tela2/Perfil/Perfil.component';
 import { ModalEditPerfilComponent } from './Tela2/modalEditPerfil/modalEditPerfil.component';
+import { ModalDeleteProfileComponent } from './Tela2/modal-delete-profile/modal-delete-profile.component';
 
 import { ContaService } from './services/conta.service';
 import { RotasService } from './services/rotas.service';
@@ -30,6 +31,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CadastroComponent,
     PerfilComponent,
     ModalEditPerfilComponent,
+    ModalDeleteProfileComponent
   ],
   imports: [
     BrowserModule,
