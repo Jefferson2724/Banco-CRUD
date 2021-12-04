@@ -1,4 +1,4 @@
 export class DadosLogin {
-    email: String = "";
-    senha: String = "";
+    email: String;
+    senha: String;
 }

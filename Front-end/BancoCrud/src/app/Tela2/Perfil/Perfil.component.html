@@ -16,7 +16,7 @@
     </div>
   </div>
   <div class="block-buttons">
-    <div class="edit-profile">
+    <div class="edit-profile" (click)="openDialog()">
       Editar Perfil
     </div>
     <div class="delete-account">
@@ -24,7 +24,6 @@
     </div>
   </div>
 </article>
-<hr>
 <aside class="container-balance">
   <div>
     <p>Seu saldo é de: </p><span>{{ saldoAccount }}</span>

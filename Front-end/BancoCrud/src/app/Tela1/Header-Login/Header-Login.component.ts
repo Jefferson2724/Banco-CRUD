@@ -14,7 +14,10 @@ import { RotasService } from 'src/app/services/rotas.service';
 })
 export class HeaderLoginComponent implements OnInit {
   checkValue:boolean;
-  dadosInseridos:DadosLogin;
+  dadosInseridos = {
+    "email": null,
+    "senha": null
+  }
   id:any;
 
   constructor(
@@ -31,8 +34,8 @@ export class HeaderLoginComponent implements OnInit {
     if(form.value["email"] == "" || form.value["senha"] == ""){
       return;
     }
-    debugger;
-    //this.inserirDadosVar(form);
+
+    this.inserirDadosVar(form);
     //this.contaService.loginUsuario(this.dadosUsuario);
 
     console.log(form);
@@ -40,7 +43,6 @@ export class HeaderLoginComponent implements OnInit {
   }
 
   inserirDadosVar(form){
-    debugger;
     this.dadosInseridos["email"] = form.value["email"];
     this.dadosInseridos["senha"] = form.value["senha"];
   }
