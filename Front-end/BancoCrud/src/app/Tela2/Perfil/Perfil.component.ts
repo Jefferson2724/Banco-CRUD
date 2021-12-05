@@ -13,6 +13,7 @@ import { ModalDeleteProfileComponent } from '../modal-delete-profile/modal-delet
 export class PerfilComponent implements OnInit {
   profileName = this.dadosConta.nome;
   saldoAccount = this.dadosConta.saldo;
+  emailAccount = this.dadosConta.email;
   animal:String;
 
 
@@ -27,7 +28,10 @@ export class PerfilComponent implements OnInit {
 
   openDialogEditProfile() {
     const dialogRef = this.dialog.open(ModalEditPerfilComponent, {
-      width: '600px'
+      width: '600px',
+      data: {
+        email: this.emailAccount
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {

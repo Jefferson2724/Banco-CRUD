@@ -24,7 +24,7 @@ export class RotasService {
     return this.dadosConta.id;
   }
 
-  requestDataProfile(cpf) {
+  requestDataProfile(email) {
     let respostaLogin: BehaviorSubject<any> = new BehaviorSubject(undefined);
     let params:HttpParams;
 
@@ -44,6 +44,22 @@ export class RotasService {
   getAllUsers() {
     return this.httpClient.get<ModalDelete[]>(`${this.url}/allUsers`);
   
+  }
+
+  editProfile(form){
+    let respostaLogin: BehaviorSubject<any> = new BehaviorSubject(undefined);
+
+    this.httpClient.put<any>(`${this.url}/deleteUser`, form, {observe: 'response' }).subscribe(
+      response => {
+        respostaLogin.next(response.body);
+      },
+      error => {
+        console.log("Houve algum erro");
+        return;
+      }
+    );
+  
+    return respostaLogin.asObservable();
   }
 
   deleteUser(cpf){

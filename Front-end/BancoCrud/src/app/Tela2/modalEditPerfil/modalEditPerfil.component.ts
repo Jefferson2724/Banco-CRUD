@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 import { NgForm } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { RotasService } from 'src/app/services/rotas.service';
@@ -9,6 +10,8 @@ import { RotasService } from 'src/app/services/rotas.service';
   styleUrls: ['./modalEditPerfil.component.css']
 })
 export class ModalEditPerfilComponent implements OnInit {
+  emailAccount:any;
+  cpfAccount:any;
 
   constructor(
     public dialogRef: MatDialogRef<ModalEditPerfilComponent>,
@@ -17,10 +20,13 @@ export class ModalEditPerfilComponent implements OnInit {
   ) {}
 
   ngOnInit(){
-    
+    //this.emailAccount = this.rotasService.requestDataProfile(this.data.email);
+    this.emailAccount = "teste@TestBed.com";
+    this.cpfAccount = "123456789";
   } 
 
   onSubmit(form: NgForm) {
+    debugger;
     if(this.validFields){
       return;
     }
@@ -30,7 +36,7 @@ export class ModalEditPerfilComponent implements OnInit {
       return;
     }
 
-    this.rotasService.requestDataProfile(form.value["cpf"]);
+    this.rotasService.editProfile(form.value);
   }
 
   validFields(form:NgForm){

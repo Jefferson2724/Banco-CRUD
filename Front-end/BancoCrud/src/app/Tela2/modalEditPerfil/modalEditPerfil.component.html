@@ -11,22 +11,22 @@
 
     <div class="mb-3">
       <label for="cpf" class="form-label">CPF</label>
-      <input type="password" class="form-control" name="cpf" id="cpf" disabled ngModel>
+      <input type="number" class="form-control" name="cpf" value="emailAccount" id="cpf" disabled ngModel>
     </div>
 
     <div class="mb-3">
       <label for="cep" class="form-label">CEP</label>
-      <input type="password" class="form-control" name="cep" id="cep" ngModel>
+      <input type="number" class="form-control" name="cep" id="cep" ngModel>
     </div>
 
     <div class="mb-3">
       <label for="emailProfile" class="form-label">EMAIL</label>
-      <input type="password" class="form-control" name="email" id="email" disabled ngModel>
+      <input type="String" class="form-control" name="email" [value]="this.cpfAccount" id="email" disabled ngModel>
     </div>
 
     <div class="mb-3">
       <label for="age" class="form-label">IDADE</label>
-      <input type="password" class="form-control" name="age" id="age" ngModel>
+      <input type="number" class="form-control" name="age" id="age" ngModel>
     </div>
 
     <div class="mb-3">
