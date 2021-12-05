@@ -51,6 +51,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DadosConta,
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ModalEditPerfilComponent]
+  entryComponents: [
+    ModalEditPerfilComponent,
+    ModalDeleteProfileComponent,
+  ]
 })
 export class AppModule { }

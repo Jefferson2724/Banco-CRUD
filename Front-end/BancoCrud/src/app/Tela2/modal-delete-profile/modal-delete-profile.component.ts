@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { RotasService } from 'src/app/services/rotas.service';
+import { ModalDelete } from 'src/app/models/modalDelete';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-modal-delete-profile',
@@ -6,10 +9,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./modal-delete-profile.component.css']
 })
 export class ModalDeleteProfileComponent implements OnInit {
-
-  constructor() { }
+  users:ModalDelete[];
+  constructor(
+    public dialogRef: MatDialogRef<ModalDeleteProfileComponent>,
+    @Inject(MAT_DIALOG_DATA) public data,
+    private rotasService:RotasService
+    ) { }
 
   ngOnInit() {
+    this.getUsersData();
   }
 
+  deleteUser(cpf){
+    this.rotasService.deleteUser(cpf);
+  }
+
+  getUsersData(){
+    return this.rotasService.getAllUsers()
+    .subscribe( dataUsers => this.users = dataUsers);
+  }
 }

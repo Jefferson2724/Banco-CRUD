@@ -3,6 +3,7 @@ import { DadosConta } from 'src/app/models/DadosConta';
 import { RotasService } from 'src/app/services/rotas.service';
 import { MatDialog } from '@angular/material';
 import { ModalEditPerfilComponent } from '../modalEditPerfil/modalEditPerfil.component';
+import { ModalDeleteProfileComponent } from '../modal-delete-profile/modal-delete-profile.component';
 
 @Component({
   selector: 'app-Perfil',
@@ -24,7 +25,7 @@ export class PerfilComponent implements OnInit {
   ngOnInit() {
   }
 
-  openDialog() {
+  openDialogEditProfile() {
     const dialogRef = this.dialog.open(ModalEditPerfilComponent, {
       width: '600px'
     });
@@ -33,4 +34,15 @@ export class PerfilComponent implements OnInit {
       
     });
   }
+
+  openDialogDeleteProfile() {
+    const dialogRef = this.dialog.open(ModalDeleteProfileComponent, {
+      width: '600px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      
+    });
+  }
+
 }

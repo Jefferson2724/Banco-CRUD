@@ -34,7 +34,6 @@ export class ModalEditPerfilComponent implements OnInit {
   }
 
   validFields(form:NgForm){
-
     if(form.value["name"] == "") {
       return true;
     }else if(form.value["cpf"] == "") {
