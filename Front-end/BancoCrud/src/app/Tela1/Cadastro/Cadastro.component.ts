@@ -22,6 +22,8 @@ export class CadastroComponent implements OnInit {
   }
 
   onSubmit(form:NgForm) {
+    debugger;
+
     if(this.check != true){
       console.log("Confirme o checkBox dos Termos");
       return;
@@ -39,6 +41,7 @@ export class CadastroComponent implements OnInit {
 
     this.inserirDadosCadastro(form);
 
+    this.contaService.conectado();
     this.contaService.cadastroUsuario(this.dadosCadastro);
 
   }

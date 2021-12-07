@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  ACC_API: "localhost:xxxx"
+  ACC_API: "http://localhost:3000"
 };
 
 /*

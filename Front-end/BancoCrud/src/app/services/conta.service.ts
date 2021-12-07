@@ -38,11 +38,32 @@ export class ContaService {
   cadastroUsuario(dadosUsuario:CadastroConta){
     let respostaLogin: BehaviorSubject<ConfirmarReq> = new BehaviorSubject(undefined);
 
-    this.httpClient.post<ConfirmarReq>(`${this.url}/register`,dadosUsuario, {observe: 'response'}).subscribe(
+    this.httpClient.post<any>(`${this.url}/user`,dadosUsuario, {observe: 'response'}).subscribe(
       response => {
+        debugger;
         respostaLogin.next(response.body);
       },
       error => {
+        debugger;
+        console.log("Houve algum erro");
+        return;
+      }
+    );
+  
+    return respostaLogin.asObservable();
+  }
+
+  conectado(){
+    let respostaLogin: BehaviorSubject<ConfirmarReq> = new BehaviorSubject(undefined);
+    debugger;
+
+    this.httpClient.get<any>(`${this.url}/`, {observe: 'response'}).subscribe(
+      response => {
+        debugger;
+        respostaLogin.next(response.body);
+      },
+      error => {
+        debugger;
         console.log("Houve algum erro");
         return;
       }
