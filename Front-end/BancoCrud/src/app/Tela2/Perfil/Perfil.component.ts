@@ -4,8 +4,9 @@ import { RotasService } from 'src/app/services/rotas.service';
 import { MatDialog } from '@angular/material';
 import { ModalEditPerfilComponent } from '../modalEditPerfil/modalEditPerfil.component';
 import { ModalDeleteProfileComponent } from '../modal-delete-profile/modal-delete-profile.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmarReq } from 'src/app/models/confirmarReq';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-Perfil',
@@ -17,16 +18,23 @@ export class PerfilComponent implements OnInit {
   balance: Number;
   dataUser:dataAccountProfile = {} as dataAccountProfile;
   id: any;
-
-  ind = 'indisponivel';
+  token: String;
 
   constructor(
     private rotasService: RotasService,
     private dialog: MatDialog,
     private activeRoute: ActivatedRoute,
+    private router: Router,
+    private authentication: AuthenticationService,
     ) { }
 
   ngOnInit() {
+    this.token = this.authentication.getToken();
+
+    if(!this.token){
+      this.router.navigate(['/']);
+    }
+
     this.id = this.activeRoute.snapshot.params['id'];
     this.getDataUser(this.id);
   }
@@ -65,8 +73,12 @@ export class PerfilComponent implements OnInit {
   }
 
   insertValuesProfiles(dataUser){
-    debugger;
     this.name = dataUser.nome;
     this.balance = dataUser.saldo;
+  }
+
+  logout(){
+    this.authentication.deleteToken();
+    this.router.navigate(['/']);
   }
 }

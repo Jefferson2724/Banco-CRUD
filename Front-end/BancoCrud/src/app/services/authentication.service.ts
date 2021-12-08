@@ -41,6 +41,7 @@ export class AuthenticationService {
 
   deleteToken(){
     this.cookies.deleteAll();
+    this.cookies.delete("Authorization");
   }
 
   getToken(){
