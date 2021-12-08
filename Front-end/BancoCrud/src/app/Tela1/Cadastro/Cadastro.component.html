@@ -5,7 +5,7 @@
   <form class="form-cadastro" (ngSubmit)="onSubmit(form)" #form="ngForm">
     <div>
       <label for="nome">Nome: </label>
-      <input type="text" name="nome" ngModel>
+      <input type="text" name="name" ngModel>
     </div>
 
     <div>
@@ -15,27 +15,27 @@
 
     <div>  
       <label for="cep">CEP: </label>
-      <input type="text" name="cep" ngModel>
+      <input type="number" name="cep" ngModel>
     </div>   
 
     <div>
       <label for="cpf">CPF: </label>
-      <input type="text" name="cpf" ngModel>
+      <input type="number" name="cpf" ngModel>
     </div>
 
     <div>
       <label for="idade">Idade: </label>
-      <input type="text" name="idade" ngModel>
+      <input type="number" name="age" ngModel>
     </div>   
 
     <div>
       <label for="senha">Senha: </label>
-      <input type="password" name="senha" ngModel>
+      <input type="password" name="password" ngModel>
     </div> 
       
     <div>
       <label for="rep-senha">Repita a senha: </label>
-      <input type="password" name="rep-senha" ngModel>  
+      <input type="password" name="rep-password" ngModel>  
     </div>  
 
     <button type="submit" class="botao-cadastrar">Cadastrar-se</button>

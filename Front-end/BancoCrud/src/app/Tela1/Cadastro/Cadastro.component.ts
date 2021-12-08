@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CadastroConta } from 'src/app/models/cadastroConta';
 import { ContaService } from 'src/app/services/conta.service';
 
@@ -10,11 +11,11 @@ import { ContaService } from 'src/app/services/conta.service';
 })
 export class CadastroComponent implements OnInit {
   @Input() check:boolean;
-
+  dadosCadastro:CadastroConta = {} as CadastroConta;
 
   constructor(
     private contaService:ContaService,
-    private dadosCadastro:CadastroConta
+    private router: Router
     ) { }
 
   ngOnInit() {
@@ -22,7 +23,7 @@ export class CadastroComponent implements OnInit {
   }
 
   onSubmit(form:NgForm) {
-    debugger;
+
 
     if(this.check != true){
       console.log("Confirme o checkBox dos Termos");
@@ -34,15 +35,13 @@ export class CadastroComponent implements OnInit {
       return;
     }
 
-    if (form.value["senha"] != form.value["rep-senha"]){
+    if (form.value["password"] != form.value["rep-password"]){
       console.log("Senhas não coincidem!");
       return;
     }
 
     this.inserirDadosCadastro(form);
-
-    this.contaService.conectado();
-    this.contaService.cadastroUsuario(this.dadosCadastro);
+    this.registerUser(form);
 
   }
 
@@ -68,11 +67,25 @@ export class CadastroComponent implements OnInit {
   }
 
   inserirDadosCadastro(form){
-    this.dadosCadastro["nome"] = form.value["nome"];
+    this.dadosCadastro["nome"] = form.value["name"];
     this.dadosCadastro["email"] = form.value["email"];
     this.dadosCadastro["cep"] = form.value["cep"];
     this.dadosCadastro["cpf"] = form.value["cpf"];
-    this.dadosCadastro["idade"] = form.value["idade"];
-    this.dadosCadastro["senha"] = form.value["senha"];
+    this.dadosCadastro["idade"] = form.value["age"];
+    this.dadosCadastro["password"] = form.value["password"];
+  }
+
+  registerUser(form){
+    this.contaService.registerUser(this.dadosCadastro).subscribe(
+      response => {
+        this.redirectProfile(response);
+      },
+    )
+  }
+
+  redirectProfile(dadosUsuario){
+    if(dadosUsuario){
+      this.router.navigate([`/navegar/${dadosUsuario._id}`])
+    }
   }
 }

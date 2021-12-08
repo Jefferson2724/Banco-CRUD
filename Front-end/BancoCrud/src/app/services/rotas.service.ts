@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { DadosConta } from '../models/DadosConta';
+import { dataAccountProfile } from '../models/DadosConta';
 import { ModalDelete } from '../models/modalDelete';
 
 @Injectable({
@@ -10,21 +10,33 @@ import { ModalDelete } from '../models/modalDelete';
 })
 export class RotasService {
   private readonly url = `${environment.ACC_API}`;
+  dataUsers;
 
   constructor(
-    private dadosConta:DadosConta,
     private httpClient: HttpClient
     ) { }
 
-  getContaTest() {
-    return this.dadosConta;
+
+  getDataUser(id){
+    let respostaLogin: BehaviorSubject<any> = new BehaviorSubject(undefined);
+
+    this.httpClient.get<any>(`${this.url}/user`, {observe: 'response'}).subscribe(
+      response => {
+        this.dataUsers = response.body;
+        let userCorrect = this.verifyUser(this.dataUsers, id);
+
+        respostaLogin.next(userCorrect);
+      },
+      error => {
+        console.log("Houve algum erro");
+        return;
+      }
+    );
+
+    return respostaLogin.asObservable();
   }
 
-  getContaTestId(){
-    return this.dadosConta.id;
-  }
-
-  requestDataProfile(email) {
+  requestDataProfile(cpf) {
     let respostaLogin: BehaviorSubject<any> = new BehaviorSubject(undefined);
     let params:HttpParams;
 
@@ -77,5 +89,10 @@ export class RotasService {
     );
   
     return respostaLogin.asObservable();
+  }
+
+  verifyUser(dataUsers, id){
+    return dataUsers.filter(
+      user => user._id === id);
   }
 }

@@ -20,7 +20,6 @@ import { RotasService } from './services/rotas.service';
 import { DadosLogin } from './models/dadosLogin';
 import { ConfirmarReq } from './models/confirmarReq';
 import { CadastroConta } from './models/cadastroConta';
-import { DadosConta } from './models/DadosConta';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -46,9 +45,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DadosLogin,
     ConfirmarReq,
     ContaService,
-    CadastroConta,
     RotasService,
-    DadosConta,
   ],
   bootstrap: [AppComponent],
   entryComponents: [

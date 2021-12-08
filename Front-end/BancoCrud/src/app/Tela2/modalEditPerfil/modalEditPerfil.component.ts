@@ -26,7 +26,6 @@ export class ModalEditPerfilComponent implements OnInit {
   } 
 
   onSubmit(form: NgForm) {
-    debugger;
     if(this.validFields){
       return;
     }

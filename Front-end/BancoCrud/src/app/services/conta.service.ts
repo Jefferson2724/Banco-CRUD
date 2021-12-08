@@ -18,13 +18,12 @@ export class ContaService {
     private httpClient: HttpClient,
     private http: HttpClient) { }
 
-  loginUsuario(dadosUsuario:DadosLogin) {
-    let respostaLogin: BehaviorSubject<ConfirmarReq> = new BehaviorSubject(undefined);
-    let params:HttpParams;
+  loginUser(dadosUsuario:DadosLogin) {
+    let resLogin: BehaviorSubject<ConfirmarReq> = new BehaviorSubject(undefined);
 
-    this.httpClient.get<ConfirmarReq>(`${this.url}/login`, {observe: 'response', params: params}).subscribe(
+    this.httpClient.post<ConfirmarReq>(`${this.url}/login`, dadosUsuario, {observe: 'response'}).subscribe(
       response => {
-        respostaLogin.next(response.body);
+        resLogin.next(response.body);
       },
       error => {
         console.log("Houve algum erro");
@@ -32,43 +31,37 @@ export class ContaService {
       }
     );
   
-    return respostaLogin.asObservable();
+    return resLogin.asObservable();
   }
 
-  cadastroUsuario(dadosUsuario:CadastroConta){
-    let respostaLogin: BehaviorSubject<ConfirmarReq> = new BehaviorSubject(undefined);
+  registerUser(dadosUsuario:CadastroConta){
+    let resUser: BehaviorSubject<CadastroConta> = new BehaviorSubject(undefined);
 
     this.httpClient.post<any>(`${this.url}/user`,dadosUsuario, {observe: 'response'}).subscribe(
       response => {
-        debugger;
-        respostaLogin.next(response.body);
+        resUser.next(response.body);
       },
-      error => {
-        debugger;
+      error => {        
         console.log("Houve algum erro");
         return;
       }
     );
-  
-    return respostaLogin.asObservable();
+    return resUser.asObservable();
   }
 
   conectado(){
-    let respostaLogin: BehaviorSubject<ConfirmarReq> = new BehaviorSubject(undefined);
-    debugger;
+    let resLogin: BehaviorSubject<ConfirmarReq> = new BehaviorSubject(undefined);
 
     this.httpClient.get<any>(`${this.url}/`, {observe: 'response'}).subscribe(
       response => {
-        debugger;
-        respostaLogin.next(response.body);
+        resLogin.next(response.body);
       },
       error => {
-        debugger;
         console.log("Houve algum erro");
         return;
       }
     );
   
-    return respostaLogin.asObservable();
+    return resLogin.asObservable();
   }
 }

@@ -1,8 +1,8 @@
-export class CadastroConta {
-    nome: String;
+export interface CadastroConta {
+    name: String;
     email: String;
-    cep: number;
-    cpf: number;
-    idade: number;
-    senha: number;
+    cep: Number;
+    cpf: Number;
+    age: Number;
+    password: Number;
 }
