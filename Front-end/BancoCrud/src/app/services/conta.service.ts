@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { ConfirmarReq } from '../models/confirmarReq';
@@ -6,6 +6,7 @@ import { DadosLogin } from '../models/dadosLogin';
 import { BehaviorSubject } from 'rxjs';
 import { ReturnStatement } from '@angular/compiler';
 import { CadastroConta } from '../models/cadastroConta';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,25 +14,29 @@ import { CadastroConta } from '../models/cadastroConta';
 export class ContaService {
 
   private readonly url = `${environment.ACC_API}`;
+  token:String;
 
   constructor(
     private httpClient: HttpClient,
-    private http: HttpClient) { }
+    private authetication: AuthenticationService
+    ) { }
 
-  loginUser(dadosUsuario:DadosLogin) {
-    let resLogin: BehaviorSubject<ConfirmarReq> = new BehaviorSubject(undefined);
+  loginUser(dadosUsuario:DadosLogin, token) {
+    const header = {
+		headers: new HttpHeaders({
+				'observe': 'response',
+				'Authorization': `${token}`
+			})
+    }
 
-    this.httpClient.post<ConfirmarReq>(`${this.url}/login`, dadosUsuario, {observe: 'response'}).subscribe(
+    return this.httpClient.post<any>(`${this.url}/login`, dadosUsuario, header).subscribe(
       response => {
-        resLogin.next(response.body);
       },
       error => {
-        console.log("Houve algum erro");
-        return;
+        console.log(error);
+        return false;
       }
     );
-  
-    return resLogin.asObservable();
   }
 
   registerUser(dadosUsuario:CadastroConta){

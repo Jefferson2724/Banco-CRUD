@@ -23,7 +23,6 @@ export class AuthenticationService {
 
     this.httpClient.post<any>(`${this.url}/authenticate`, dataLogin, {observe: 'response'}).subscribe(
       response => {
-        debugger;
         this.setTokenCookie(response.body.token);
         dataUserAuth.next(response.body);
       },
@@ -45,7 +44,6 @@ export class AuthenticationService {
   }
 
   getToken(){
-    debugger;
     return this.cookies.get("Authorization");
   }
 }
