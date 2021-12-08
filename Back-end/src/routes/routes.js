@@ -12,7 +12,7 @@ routes.get('/', (req,res)=>{
 
 
 routes.get('/user',  usuarioController.index);// chamada para pegar os users dentro da controller
-routes.get('/authenticate', usuarioController.authenticate); // chamada do login 
+routes.post('/authenticate', usuarioController.authenticate); // chamada do login 
 routes.post('/login', verifyToken, usuarioController.login);
 routes.post('/user', verifyToken, usuarioController.create);// chamada para inserir 
 routes.get('/user/:_id',usuarioController.read);// chamada para buscar um usuario pelo cpf ou buscar todos
