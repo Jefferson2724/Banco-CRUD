@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-//criando nova collection
+//criando colunas da collection
 const DataSchema = new mongoose.Schema({
     nome: String, 
     email: String,
@@ -8,9 +8,9 @@ const DataSchema = new mongoose.Schema({
     cpf: Number, 
     idade: Number, 
     senha: Number,
-})
+    balance:Number})
 
-const usuario = mongoose.model('Usuario',DataSchema)
+const usuario = mongoose.model('Usuario',DataSchema)//criando e nomeando a collection 
 
 
-module.exports = usuario;
+module.exports = usuario; // exportando para poder usar em outros lugares
