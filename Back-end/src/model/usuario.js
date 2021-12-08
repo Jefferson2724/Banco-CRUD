@@ -7,7 +7,7 @@ const DataSchema = new mongoose.Schema({
     cep: Number,
     cpf: Number, 
     idade: Number, 
-    senha: Number
+    senha: Number,
 })
 
 const usuario = mongoose.model('Usuario',DataSchema)

@@ -12,7 +12,7 @@ routes.get('/', (req,res)=>{
 //routes.get('/login', requestLogin.requestLogin)
 routes.get('/user', usuarioController.index)// chamada para pegar os users dentro da controller
 routes.post('/user', usuarioController.criar)// chamada para inserir 
-routes.get('/user/:_id',usuarioController.buscarPorId)// chamada para buscar um usuario pelo id
+routes.get('/getDataProfile/:_id',usuarioController.buscarPorId)// chamada para buscar um usuario pelo id
 routes.delete('/user/:_id',usuarioController.deletar)//apagar por id
 routes.put('/user',usuarioController.atualizar ) //atualizar 
 module.exports = routes;
