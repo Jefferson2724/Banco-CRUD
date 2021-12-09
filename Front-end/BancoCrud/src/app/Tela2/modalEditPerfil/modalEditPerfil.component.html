@@ -11,7 +11,10 @@
 
     <div class="mb-3">
       <label for="cpf" class="form-label">CPF</label>
-      <input type="number" class="form-control" name="cpf" value="emailAccount" id="cpf" disabled ngModel>
+      <input type="number" class="form-control" name="cpf" value="emailAccount" id="cpf"  ngModel>
+      <!--div class="invalid-feedback">
+        Campo desativado, pois ele não pode ser alterado.
+      </div-->
     </div>
 
     <div class="mb-3">
@@ -21,7 +24,10 @@
 
     <div class="mb-3">
       <label for="emailProfile" class="form-label">EMAIL</label>
-      <input type="String" class="form-control" name="email" [value]="this.cpfAccount" id="email" disabled ngModel>
+      <input type="String" class="form-control" name="email" [value]="this.cpfAccount" id="email"  ngModel>
+      <!--div class="invalid-feedback">
+        Campo desativado, pois ele não pode ser alterado.
+      </div-->
     </div>
 
     <div class="mb-3">
@@ -31,10 +37,10 @@
 
     <div class="mb-3">
       <label for="actualPassword" class="form-label">SENHA ATUAL</label>
-      <input type="password" class="form-control" name="actualPassword" id="actualPassword" ngModel>
+      <input type="password" class="form-control" name="password" id="actualPassword" ngModel>
     </div>
 
-    <div class="mb-3">
+    <!--div class="mb-3">
       <label for="newPassword" class="form-label">NOVA SENHA</label>
       <input type="password" class="form-control" name="newPassword" id="newPassword" ngModel>
     </div>
@@ -42,8 +48,8 @@
     <div class="mb-3">
       <label for="repeatNewPassword" class="form-label">REPITA A NOVA SENHA</label>
       <input type="password" class="form-control" name="repeatNewPassword" id="repeatNewPassword" ngModel>
-    </div>
+    </div-->
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" >Editar perfil</button>
   </form>
 </mat-dialog-content>

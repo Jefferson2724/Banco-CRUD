@@ -1,9 +1,10 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { dataAccountProfile } from '../models/DadosConta';
 import { ModalDelete } from '../models/modalDelete';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,19 +14,19 @@ export class RotasService {
   dataUsers;
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private authentication: AuthenticationService
     ) { }
 
 
   getDataUser(id){
     let respostaLogin: BehaviorSubject<any> = new BehaviorSubject(undefined);
 
-    this.httpClient.get<any>(`${this.url}/user`, {observe: 'response'}).subscribe(
+    this.httpClient.get<any>(`${this.url}/user/${id}`, {observe: 'response'}).subscribe(
       response => {
         this.dataUsers = response.body;
-        let userCorrect = this.verifyUser(this.dataUsers, id);
 
-        respostaLogin.next(userCorrect);
+        respostaLogin.next(this.dataUsers);
       },
       error => {
         console.log("Houve algum erro");
@@ -60,8 +61,14 @@ export class RotasService {
 
   editProfile(form){
     let respostaLogin: BehaviorSubject<any> = new BehaviorSubject(undefined);
-
-    this.httpClient.put<any>(`${this.url}/deleteUser`, form, {observe: 'response' }).subscribe(
+    let token = this.authentication.getToken();
+    const header = {
+      headers: new HttpHeaders({
+          'observe': 'response',
+          'Authorization': `${token}`
+        })
+      }
+    this.httpClient.put<any>(`${this.url}/updateProfile`, form, header).subscribe(
       response => {
         respostaLogin.next(response.body);
       },

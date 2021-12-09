@@ -1,7 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { ModalUpdate } from 'src/app/models/modal-update';
 import { RotasService } from 'src/app/services/rotas.service';
 
 @Component({
@@ -10,9 +10,10 @@ import { RotasService } from 'src/app/services/rotas.service';
   styleUrls: ['./modalEditPerfil.component.css']
 })
 export class ModalEditPerfilComponent implements OnInit {
-  emailAccount:any;
-  cpfAccount:any;
+  dadosCadastro: ModalUpdate = {} as ModalUpdate;
 
+  @ViewChild('form', {static: true}) fieldForm: ElementRef;
+  
   constructor(
     public dialogRef: MatDialogRef<ModalEditPerfilComponent>,
     @Inject(MAT_DIALOG_DATA) public data,
@@ -20,22 +21,23 @@ export class ModalEditPerfilComponent implements OnInit {
   ) {}
 
   ngOnInit(){
-    //this.emailAccount = this.rotasService.requestDataProfile(this.data.email);
-    this.emailAccount = "teste@TestBed.com";
-    this.cpfAccount = "123456789";
+    this.viewValuesProfile(this.fieldForm);
   } 
 
   onSubmit(form: NgForm) {
-    if(this.validFields){
+    if(this.validFields(form)){
+      console.log("caindo aq")
       return;
     }
 
-    if (form.value["newPaswwrod"] != form.value["repeatNewPassword"]){
+   /* if (form.value["newPaswwrod"] != form.value["repeatNewPassword"]){
       console.log("Senhas não coincidem!");
       return;
-    }
+    }*/
+    this.setDataForm(form);
 
-    this.rotasService.editProfile(form.value);
+    this.rotasService.editProfile(this.dadosCadastro);
+    this.dialogRef.close();
   }
 
   validFields(form:NgForm){
@@ -49,14 +51,30 @@ export class ModalEditPerfilComponent implements OnInit {
       return true;
     }else if(form.value["age"] == ""){
       return true;
-    }else if(form.value["actualPassword"] == ""){
+    }else if(form.value["password"] == ""){
       return true;
-    }else if(form.value["newPassword"] == ""){
+    }
+  /*  }else if(form.value["newPassword"] == ""){
       return true;
     }else if(form.value["repeatNewPassword"] == ""){
       return true;
-    }
+    }*/
 
     return false;
+  }
+
+  setDataForm(form){
+    this.dadosCadastro["name"] = form.value["name"];
+    this.dadosCadastro["email"] = form.value["email"];
+    this.dadosCadastro["cep"] = form.value["cep"];
+    this.dadosCadastro["cpf"] = form.value["cpf"];
+    this.dadosCadastro["age"] = form.value["age"];
+    this.dadosCadastro["password"] = form.value["password"];
+
+    this.dadosCadastro["_id"] = this.data._id;
+  }
+
+  viewValuesProfile(form){
+
   }
 }

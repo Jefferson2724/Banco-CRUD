@@ -15,7 +15,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class PerfilComponent implements OnInit {
   name: String;
-  balance: Number;
+  balance: String;
   dataUser:dataAccountProfile = {} as dataAccountProfile;
   id: any;
   token: String;
@@ -44,7 +44,7 @@ export class PerfilComponent implements OnInit {
       Response => {
         this.dataUser = Response;
         if(this.dataUser){
-          this.insertValuesProfiles(this.dataUser[0]);
+          this.insertValuesProfiles(this.dataUser);
         }
       }
     )
@@ -54,12 +54,12 @@ export class PerfilComponent implements OnInit {
     const dialogRef = this.dialog.open(ModalEditPerfilComponent, {
       width: '600px',
       data: {
-        email: this.dataUser.email
+        _id: this.id
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      
+      this.router.navigate([`/navegar/${this.id}`])
     });
   }
 
@@ -73,8 +73,8 @@ export class PerfilComponent implements OnInit {
   }
 
   insertValuesProfiles(dataUser){
-    this.name = dataUser.nome;
-    this.balance = dataUser.saldo;
+    this.name = dataUser.name;
+    this.balance = "5.000.000";
   }
 
   logout(){

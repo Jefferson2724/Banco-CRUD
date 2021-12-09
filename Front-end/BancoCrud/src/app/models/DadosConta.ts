@@ -1,5 +1,5 @@
 export interface dataAccountProfile {
-    nome?:String;
+    name?:String;
     email?:String;
     balance?:String;
 }
