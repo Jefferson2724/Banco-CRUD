@@ -1,14 +1,15 @@
 const mongoose = require('mongoose')
 
-//criando colunas da collection
+//criando fields da collection
 const DataSchema = new mongoose.Schema({
-    nome: String, 
+    name: String, 
     email: String,
     cep: Number,
     cpf: Number, 
-    idade: Number, 
-    senha: Number,
-    balance:Number})
+    age: Number, 
+    password: Number,
+    balance: Number,
+})
 
 const usuario = mongoose.model('Usuario',DataSchema)//criando e nomeando a collection 
 

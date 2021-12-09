@@ -19,7 +19,7 @@ module.exports = {
 
             let logando = {} 
 
-             logando = {email, senha}
+            logando = {email, senha}
             const usuarios = await Usuario.findOne({_id},logando);
             res.status(201).json(usuarios) // status 201 para informar que um novo recurso foi criado 
         },
@@ -44,14 +44,14 @@ module.exports = {
         try{ 
             const {nome, email, cep, cpf, idade, senha} = req.body; // pegando dados da requisição
         
-            let dateCreate = {} //recebe os valores do body
+            let creating = {} //recebe os valores do body
 
             
             if(!nome || !email || !cep || !cpf || !idade || !senha) {
             res.status(400).json({error:'Preencha todos os campos'})
             }
             //inserindo os valores
-            dateCreate = { nome, email, cep, cpf, idade, senha }
+            creating = { nome, email, cep, cpf, idade, senha }
             const usuarios = await Usuario.create(dateCreate); // criar novo user
             res.status(201).json(usuarios) // status 201 para informar que um novo recurso foi criado 
         }catch (error){
@@ -71,22 +71,24 @@ module.exports = {
     },
 
     async delete(req,res){
-        const {_id} = req.params; // pegar por parametro nesse caso o id
-
-        const usuarios = await Usuario.findOneAndDelete({_id}); // deletar  user
-
-        res.status(usuarios)// 204 = acção realizada e nada mais precisa ser fornecido
+        try { 
+        const {_id} = req.params; // passar o parametro nesse caso o id
+        const usuarios=  await Usuario.findByIdAndDelete({_id}); // deletar  user
+        res.status(204).json(usuarios)  // 204 = acção realizada e nada mais precisa ser fornecido
+        }catch (error) {
+            res.json({error: error})
+        }
 
     },
 
     async update(req,res){
-        const {_id, nome, email, cpf, senha} = req.body;  
+        const {_id, name, cpf, cep, email, age, password} = req.body;  
         
-        let atualizando = {}
+        let updating = {}
         
-        atualizando = { nome, email, cpf, senha} 
+        updating = { name, cpf, cep, email, age, password} 
 
-        const usuarios = await Usuario.findByIdAndUpdate({_id}, atualizando, {new:true}); // update pelo id  
+        const usuarios = await Usuario.findByIdAndUpdate({_id}, updating, {new:true}); // update pelo id  
         res.status(200).json(usuarios)
     },
 
