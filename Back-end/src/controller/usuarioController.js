@@ -42,17 +42,17 @@ module.exports = {
 
     async create(req,res){
         try{ 
-            const {nome, email, cep, cpf, idade, senha} = req.body; // pegando dados da requisição
+            const {name, email, cep, cpf, age, password} = req.body; // pegando dados da requisição
         
             let creating = {} //recebe os valores do body
 
             
-            if(!nome || !email || !cep || !cpf || !idade || !senha) {
+            if(!name || !email || !cep || !cpf || !age || !password) {
             res.status(400).json({error:'Preencha todos os campos'})
             }
             //inserindo os valores
-            creating = { nome, email, cep, cpf, idade, senha }
-            const usuarios = await Usuario.create(dateCreate); // criar novo user
+            creating = { name, email, cep, cpf, age, password }
+            const usuarios = await Usuario.create(creating); // criar novo user
             res.status(201).json(usuarios) // status 201 para informar que um novo recurso foi criado 
         }catch (error){
             res.status(500).json({error: error})

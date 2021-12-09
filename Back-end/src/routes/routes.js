@@ -14,7 +14,7 @@ routes.get('/', (req,res)=>{
 routes.get('/user',  usuarioController.index);// chamada para pegar os users dentro da controller
 routes.post('/authenticate', usuarioController.authenticate); // chamada do login 
 routes.post('/login', verifyToken, usuarioController.login);
-routes.post('/registerUser', verifyToken, usuarioController.create);// chamada para inserir 
+routes.post('/registerUser', usuarioController.create);// chamada para inserir 
 routes.get('/user/:_id', usuarioController.read);// chamada para buscar um usuario pelo cpf ou buscar todos
 routes.delete('/deleteUser/:_id', verifyToken, usuarioController.delete);//apagar por id
 routes.put('/updateProfile', verifyToken, usuarioController.update ); //atualizar
