@@ -67,11 +67,11 @@ export class CadastroComponent implements OnInit {
   }
 
   inserirDadosCadastro(form){
-    this.dadosCadastro["nome"] = form.value["name"];
+    this.dadosCadastro["name"] = form.value["name"];
     this.dadosCadastro["email"] = form.value["email"];
     this.dadosCadastro["cep"] = form.value["cep"];
     this.dadosCadastro["cpf"] = form.value["cpf"];
-    this.dadosCadastro["idade"] = form.value["age"];
+    this.dadosCadastro["age"] = form.value["age"];
     this.dadosCadastro["password"] = form.value["password"];
   }
 

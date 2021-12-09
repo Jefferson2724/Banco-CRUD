@@ -40,9 +40,10 @@ export class ContaService {
   }
 
   registerUser(dadosUsuario:CadastroConta){
+    debugger;
     let resUser: BehaviorSubject<CadastroConta> = new BehaviorSubject(undefined);
 
-    this.httpClient.post<any>(`${this.url}/user`,dadosUsuario, {observe: 'response'}).subscribe(
+    this.httpClient.post<any>(`${this.url}/registerUser`, dadosUsuario, {observe: 'response'}).subscribe(
       response => {
         resUser.next(response.body);
       },

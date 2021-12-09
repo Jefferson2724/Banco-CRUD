@@ -3,20 +3,22 @@
     <i class="bi bi-x-lg" mat-dialog-close></i>
   </div>
   <mat-dialog-content>
-    <div class="row g-3 align-items-center inputDelete">
-        <div class="col-auto">
-          <label for="cpfDelete" class="col-form-label">ID: </label>
+    <form #form="ngForm">
+        <div class="row g-3 align-items-center inputDelete">
+            <div class="col-auto">
+            <label for="cpfDelete" class="col-form-label">ID: </label>
+            </div>
+            <div class="col-auto">
+            <input type="text" name="idDelete" class="form-control" 
+            aria-describedby="Digite o ID do usuário que será deletado" ngModel>
+            </div>
+            <div class="col-auto">
+            <button type="button" id="deleteUser" class="btn btn-danger" (click)="deleteUser(form.value['idDelete'])" mat-dialog-close>
+                Deletar Conta
+            </button>
+            </div>
         </div>
-        <div class="col-auto">
-          <input type="number" #cpfDelete name="cpfDelete"  class="form-control" 
-          aria-describedby="Digite o ID do usuário que será deletado">
-        </div>
-        <div class="col-auto">
-          <button type="button" id="deleteUser" class="btn btn-danger" (click)="deleteUser(cpfDelete.value)" mat-dialog-close>
-            Deletar Conta
-          </button>
-        </div>
-    </div>
+    </form>
     <table class="table table-bordered border-primary">
         <thead>
             <tr>
