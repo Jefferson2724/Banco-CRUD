@@ -55,7 +55,7 @@ export class RotasService {
   }
 
   getAllUsers() {
-    return this.httpClient.get<ModalDelete[]>(`${this.url}/allUsers`);
+    return this.httpClient.get<any>(`${this.url}/user`);
   
   }
 
@@ -67,7 +67,7 @@ export class RotasService {
           'observe': 'response',
           'Authorization': `${token}`
         })
-      }
+    }
     this.httpClient.put<any>(`${this.url}/updateProfile`, form, header).subscribe(
       response => {
         respostaLogin.next(response.body);
@@ -81,11 +81,17 @@ export class RotasService {
     return respostaLogin.asObservable();
   }
 
-  deleteUser(cpf){
+  deleteUser(id){
     let respostaLogin: BehaviorSubject<any> = new BehaviorSubject(undefined);
-    let params:HttpParams;
+    let token = this.authentication.getToken();
+    const header = {
+      headers: new HttpHeaders({
+          'observe': 'response',
+          'Authorization': `${token}`
+        })
+      }
 
-    this.httpClient.delete<any>(`${this.url}/deleteUser`, {observe: 'response', params: params}).subscribe(
+    this.httpClient.delete<any>(`${this.url}/deleteUser/${id}`, header ).subscribe(
       response => {
         respostaLogin.next(response.body);
       },

@@ -20,8 +20,8 @@ export class ModalDeleteProfileComponent implements OnInit {
     this.getUsersData();
   }
 
-  deleteUser(cpf){
-    this.rotasService.deleteUser(cpf);
+  deleteUser(id){
+    this.rotasService.deleteUser(id);
   }
 
   getUsersData(){

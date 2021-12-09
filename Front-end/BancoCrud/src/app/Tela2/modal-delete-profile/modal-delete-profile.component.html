@@ -5,14 +5,14 @@
   <mat-dialog-content>
     <div class="row g-3 align-items-center inputDelete">
         <div class="col-auto">
-          <label for="cpfDelete" class="col-form-label">CPF: </label>
+          <label for="cpfDelete" class="col-form-label">ID: </label>
         </div>
         <div class="col-auto">
           <input type="number" #cpfDelete name="cpfDelete"  class="form-control" 
-          aria-describedby="Digite o CPF do usuário que será deletado">
+          aria-describedby="Digite o ID do usuário que será deletado">
         </div>
         <div class="col-auto">
-          <button type="button" id="deleteUser" class="btn btn-danger" (click)="deleteUser(cpfDelete.value)">
+          <button type="button" id="deleteUser" class="btn btn-danger" (click)="deleteUser(cpfDelete.value)" mat-dialog-close>
             Deletar Conta
           </button>
         </div>
@@ -20,6 +20,9 @@
     <table class="table table-bordered border-primary">
         <thead>
             <tr>
+                <th>
+                    id
+                </th>
                 <th>
                     Nome
                 </th>
@@ -36,7 +39,8 @@
         </thead>
         <tbody>
             <tr class="table-active" *ngFor="let user of users">
-                <td>{{user.nome}}</td>
+                <td>{{user._id}}</td>
+                <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.cpf}}</td>
                 <td>{{user.age}}</td>

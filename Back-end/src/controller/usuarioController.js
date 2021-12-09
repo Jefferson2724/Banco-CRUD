@@ -73,7 +73,7 @@ module.exports = {
     async delete(req,res){
         try { 
         const {_id} = req.params; // passar o parametro nesse caso o id
-        const usuarios=  await Usuario.findByIdAndDelete({_id}); // deletar  user
+        const usuarios =  await Usuario.findByIdAndDelete({_id}); // deletar  user
         res.status(204).json(usuarios)  // 204 = acção realizada e nada mais precisa ser fornecido
         }catch (error) {
             res.json({error: error})

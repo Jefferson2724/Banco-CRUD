@@ -6,3 +6,7 @@
 .inputDelete {
     margin-bottom: 20px !important;
 }
+
+th, td {
+    color: white;
+}

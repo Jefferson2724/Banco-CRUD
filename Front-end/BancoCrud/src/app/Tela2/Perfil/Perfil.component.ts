@@ -65,7 +65,7 @@ export class PerfilComponent implements OnInit {
 
   openDialogDeleteProfile() {
     const dialogRef = this.dialog.open(ModalDeleteProfileComponent, {
-      width: '600px'
+      width: '900px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
