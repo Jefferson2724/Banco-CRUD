@@ -1,43 +1,64 @@
-<div class="recipiente-cadastro">
-  <div class="cabecalho-cadastro">
+<div class="container-register">
+  <div class="title-register">
     <h1>Area de cadastro</h1>
   </div>
-  <form class="form-cadastro" (ngSubmit)="onSubmit(form)" #form="ngForm">
+  <form class="form-register" (ngSubmit)="onSubmit(form)" #form="ngForm">
     <div>
-      <label for="nome">Nome: </label>
-      <input type="text" name="name" ngModel>
+      <label for="name" class="form-label">Nome: </label>
+      <input type="text" name="name" class="form-control" ngModel>
+      <span class="invalid-feedback" *ngIf="!form.value['name'] && form.controls['name'].touched">
+        Please choose a username.
+      </span>
     </div>
 
     <div>
-      <label for="email">Email: </label>
-      <input type="text" name="email" ngModel>
+      <label for="email" class="form-label">Email: </label>
+      <input type="text" name="email" class="form-control" ngModel>
+      <span class="invalid-feedback" *ngIf="!form.value['email'] && form.controls['email'].touched">
+        Please choose a email.
+      </span>
     </div> 
 
     <div>  
-      <label for="cep">CEP: </label>
-      <input type="number" name="cep" ngModel>
+      <label for="cep" class="form-label">CEP: </label>
+      <input type="number" name="cep" class="form-control" ngModel>
+      <span class="invalid-feedback" *ngIf="!form.value['cep'] && form.controls['cep'].touched">
+        Please choose a cep.
+      </span>
     </div>   
 
     <div>
-      <label for="cpf">CPF: </label>
-      <input type="number" name="cpf" ngModel>
+      <label for="cpf" class="form-label">CPF: </label>
+      <input type="number" name="cpf" class="form-control" ngModel>
+      <span class="invalid-feedback" *ngIf="!form.value['cpf'] && form.controls['cpf'].touched">
+        Please choose a cpf.
+      </span>
     </div>
 
     <div>
-      <label for="idade">Idade: </label>
-      <input type="number" name="age" ngModel>
+      <label for="age" class="form-label">Idade: </label>
+      <input type="number" name="age" class="form-control" ngModel>
+      <span class="invalid-feedback" *ngIf="!form.value['age'] && form.controls['age'].touched">
+        Please choose a age.
+      </span>
     </div>   
 
     <div>
-      <label for="senha">Senha: </label>
-      <input type="password" name="password" ngModel>
+      <label for="password" class="form-label">Senha: </label>
+      <input type="password" name="password" class="form-control" ngModel>
+      <span class="invalid-feedback" *ngIf="!form.value['password'] && form.controls['password'].touched">
+        Please choose a password.
+      </span>
     </div> 
       
     <div>
-      <label for="rep-senha">Repita a senha: </label>
-      <input type="password" name="rep-password" ngModel>  
+      <label for="rep-password" class="form-label">Repita a senha: </label>
+      <input type="password" name="rep-password" class="form-control" ngModel>  
+      <span class="invalid-feedback" *ngIf="!form.value['rep-password'] && form.controls['rep-password'].touched">
+        Please choose the repeat password.
+      </span>
     </div>  
 
-    <button type="submit" class="botao-cadastrar">Cadastrar-se</button>
+    <button type="submit" class="button-register">Cadastrar-se</button>
   </form>
 </div>

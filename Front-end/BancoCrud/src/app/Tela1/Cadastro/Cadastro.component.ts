@@ -23,8 +23,6 @@ export class CadastroComponent implements OnInit {
   }
 
   onSubmit(form:NgForm) {
-
-
     if(this.check != true){
       console.log("Confirme o checkBox dos Termos");
       return;

@@ -9,32 +9,41 @@
   <div class="login">
     <form (ngSubmit)="onSubmit(form)" #form="ngForm">
 
-      <div class="conteudo-campos">
-        <div class="email">
-          <label for="email">Email: </label>
-          <input type="email" name="email" id="email" ngModel>
+      <div class="content-fields">
+        <div class="mb-3 email-field">
+          <label for="email" class="form-label">Email </label>
+          <input type="email" name="email" id="email" class="form-control"  
+          ngModel required>
+          <div class="invalid-feedback" *ngIf="error == true">
+            Credênciais incorretas, tente novamente !
+          </div>
         </div>
 
-        <div class="senha">
-          <label for="senha">Senha: </label>
-          <input type="password" name="senha" id="senha" ngModel>
+        <div class="mb-3 password-field">
+          <label for="password" class="form-label">Senha </label>
+          <input type="password" name="password" id="password" class="form-control"
+          ngModel required>
+          <div class="invalid-feedback" *ngIf="error == true">
+            Credênciais incorretas, tente novamente !
+          </div>
         </div>
-        
-        <div class="conteudo-botao">
-          <button type="submit" class="botao-entrar">
-            Entrar
-          </button>
-        </div>  
       </div>
+
+      <div class="content-button">
+        <button type="submit" class="button-enter">
+          Entrar
+        </button>
+      </div>
+
     </form>  
   </div>
 </header>
 
-<article class="recipiente-Cadastro-Termos">
-  <div class="termos">
+<article class="container-register-terms">
+  <div class="terms">
     <app-Termos (checkBoxValido)="validateCheckBox($event)"></app-Termos>
   </div>
-  <div class="cadastro">
+  <div class="register">
     <app-Cadastro [check]="checkValue"></app-Cadastro>
   </div>
 </article>

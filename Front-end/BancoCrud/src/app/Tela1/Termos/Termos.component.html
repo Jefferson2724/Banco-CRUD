@@ -1,15 +1,21 @@
-<div class="recipiente-termos">
-  <div class="conteudo-termos">
+<div class="container-terms">
+  <div class="content-terms">
     <h1>Termos de aceite</h1>
     <span>leia com atenção a cada termo descrito aqui</span>
-    <div class="texto-termos">
+    <div class="text-terms">
       <p>{{this.textoLoreImpsum}}</p>
     </div>
   </div>
-  <div class="conteudo-check">
-    <label for="">
-      <input type="checkbox" (click)="validCheckbox()"> Você concorda com os termos descritos aqui ?
-    </label>
+  <div class="content-check">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" (click)="validCheckbox()" name="checkBox" id="checkBox" required>
+      <label class="form-check-label" for="checkBox">
+        Agree to terms and conditions
+      </label>
+      <div class="invalid-feedback" *ngIf="!checkBoxTerm">
+        You must agree before submitting.
+      </div>
+    </div>
   </div>
 </div>
 

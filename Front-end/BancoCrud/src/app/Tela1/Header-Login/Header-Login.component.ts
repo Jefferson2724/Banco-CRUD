@@ -16,6 +16,7 @@ export class HeaderLoginComponent implements OnInit {
   checkValue:boolean;
   dataLogin: DadosLogin = new DadosLogin();
   token: String;
+  error:boolean;
 
   constructor(
     private contaService:ContaService,
@@ -40,7 +41,7 @@ export class HeaderLoginComponent implements OnInit {
 
   inserirDadosVar(form){
     this.dataLogin["email"] = form.value["email"];
-    this.dataLogin["senha"] = form.value["senha"];
+    this.dataLogin["password"] = form.value["password"];
   }
 
   validateCheckBox(check){
@@ -54,13 +55,16 @@ export class HeaderLoginComponent implements OnInit {
   authorizationLogin() {
     this.authentication.authenticationProfile(this.dataLogin).subscribe(
       response => {
-        if(response){
+        debugger;
+        if(response == "error") {
+          this.error = true;
+       } else if(response){
           this.dataLogin["_id"] = response.usuario['_id'];
           this.token = response.token;
           this.login();
+          this.error = false;
         }
-      }
-    )
+      })
   }
 
   login(){

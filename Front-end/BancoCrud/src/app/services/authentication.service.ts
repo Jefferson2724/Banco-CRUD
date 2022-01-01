@@ -27,8 +27,7 @@ export class AuthenticationService {
         dataUserAuth.next(response.body);
       },
       error => {
-        console.log("Houve algum erro");
-        return;
+        dataUserAuth.next("error");
       }
     );
 

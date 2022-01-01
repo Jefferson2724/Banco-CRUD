@@ -2,15 +2,18 @@ header {
     display: flex;
     justify-content: space-between;
 
-    height: 180px;
+    height: 240px;
     padding: 30px 15px;
 
     border-bottom: 2px solid black;
 }
 
+
 .logo{
     flex: 1;
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .login {
@@ -20,24 +23,24 @@ header {
 
 .login form {
     display: flex;
-    flex-direction: column;
 
     justify-content: center;
 }
 
-.conteudo-campos{
-    margin-bottom: 5px;
+.content-fields{
+    margin-right: 25px !important;
 }
 
-.conteudo-botao{
+.content-button{
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-left: 40px;
 }
 
-.botao-entrar{
-    padding:5px;
+.button-enter{
     width: 150px;
+    height: 50px;
     float: right;
     text-align: center;
 
@@ -47,16 +50,20 @@ header {
     border-radius: 10px;
 }
 
-.recipiente-Cadastro-Termos {
+.container-register-terms {
     display: flex;
     height: 700px;
 }
 
-.termos {
+.terms {
     flex: 1;
     height: 100%;
 }
 
-.cadastro {
+.register {
     flex: 1;
+}
+
+.invalid-feedback {
+    display: block !important;
 }
