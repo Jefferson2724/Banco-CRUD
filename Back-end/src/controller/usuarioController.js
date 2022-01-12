@@ -20,7 +20,7 @@ module.exports = {
             let logando = {} 
 
             logando = {email, senha}
-            const usuarios = await Usuario.findOne({_id},logando);
+            const usuarios = await Usuario.findOne({_id, logando});
             res.status(201).json(usuarios) // status 201 para informar que um novo recurso foi criado 
         },
 
