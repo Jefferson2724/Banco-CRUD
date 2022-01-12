@@ -1,0 +1,16 @@
+<div mat-dialog-title class="title">
+  <h2>DEPOSITAR</h2>
+  <i class="bi bi-x-lg" mat-dialog-close></i>
+</div>
+<mat-dialog-content>
+  <form class="form-cadastro" (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <div class="mb-3">
+      <label for="name" class="form-label">Valor para deposito</label>
+      <input type="number" class="form-control" name="deposit" id="name" aria-describedby="deposito"
+      placeholder="Digita o valor" selected ngModel>
+    </div>
+    <button type="button" id="deleteUser" class="btn btn-success" (click)="depositBalance(form.value['deposit'])" mat-dialog-close>
+      Depositar
+    </button>
+  </form>
+</mat-dialog-content>

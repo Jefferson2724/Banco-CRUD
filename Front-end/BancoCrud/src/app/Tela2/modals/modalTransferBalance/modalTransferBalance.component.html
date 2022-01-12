@@ -1,0 +1,58 @@
+<div mat-dialog-title class="title">
+  <h2>Deletar Conta</h2>
+  <i class="bi bi-x-lg" mat-dialog-close></i>
+</div>
+<mat-dialog-content>
+  <form #form="ngForm">
+      <div class="row g-3 align-items-center inputDelete">
+          <div class="input-group mb-3">
+            <select class="form-select form-select-lg mb-3" name="id" ngModel>
+                <option selected>Selecione o id para transferir</option>
+                <option *ngFor="let user of users">{{user._id}}</option>
+            </select>
+          </div>
+          <div class="col-auto">
+          <label for="id" class="col-form-label">Valor: </label>
+          </div>
+          <div class="col-auto">
+          <input type="number" name="balance" class="form-control" width="500px" 
+          placeholder="Digite o valor" ngModel>
+          </div>
+          <div class="col-auto">
+          <button type="button" id="deleteUser" class="btn btn-success" (click)="transferBalnce(form.value['id'], form.value['balance'], form)" mat-dialog-close>
+             Tranferir Saldo
+          </button>
+          </div>
+      </div>
+  </form>
+  <table class="table table-bordered border-primary">
+      <thead>
+          <tr>
+              <th>
+                  id
+              </th>
+              <th>
+                  Nome
+              </th>
+              <th>
+                  Email
+              </th>
+              <th>
+                  CPF
+              </th>
+              <th>
+                  Idade
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr class="table-active" *ngFor="let user of users">
+              <td>{{user._id}}</td>
+              <td>{{user.name}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.cpf}}</td>
+              <td>{{user.age}}</td>
+          </tr>
+      </tbody>
+  </table>
+</mat-dialog-content>

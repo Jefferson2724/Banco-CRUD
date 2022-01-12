@@ -1,0 +1,12 @@
+.title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputDelete {
+    margin-bottom: 20px !important;
+}
+
+th, td {
+    color: white;
+}

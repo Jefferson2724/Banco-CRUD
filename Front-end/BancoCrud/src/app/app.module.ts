@@ -13,9 +13,12 @@ import { HeaderLoginComponent } from './Tela1/Header-Login/Header-Login.componen
 import { TermosComponent } from './Tela1/Termos/Termos.component';
 import { CadastroComponent } from './Tela1/Cadastro/Cadastro.component';
 import { PerfilComponent } from './Tela2/Perfil/Perfil.component';
-import { ModalEditPerfilComponent } from './Tela2/modalEditPerfil/modalEditPerfil.component';
-import { ModalDeleteProfileComponent } from './Tela2/modal-delete-profile/modal-delete-profile.component';
+import { ModalEditPerfilComponent } from './Tela2/modals/modalEditPerfil/modalEditPerfil.component';
+import { ModalDeleteProfileComponent } from './Tela2/modals/modal-delete-profile/modal-delete-profile.component';
 import { TransferAreaComponent } from './Tela2/transferArea/transferArea.component';
+import { ModalDepositBalanceComponent } from './Tela2/modals/modalDepositBalance/modalDepositBalance.component';
+import { ModalTransferBalanceComponent } from './Tela2/modals/modalTransferBalance/modalTransferBalance.component';
+import { ModalDrawBalanceComponent } from './Tela2/modals/modalDrawBalance/modalDrawBalance.component';
 
 import { ContaService } from './services/conta.service';
 import { RotasService } from './services/rotas.service';
@@ -34,6 +37,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ModalEditPerfilComponent,
     ModalDeleteProfileComponent,
     TransferAreaComponent,
+    ModalDepositBalanceComponent,
+    ModalTransferBalanceComponent,
+    ModalDrawBalanceComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +61,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   entryComponents: [
     ModalEditPerfilComponent,
     ModalDeleteProfileComponent,
+    ModalDepositBalanceComponent,
+    ModalTransferBalanceComponent,
+    ModalDrawBalanceComponent,
+
   ]
 })
 export class AppModule { }

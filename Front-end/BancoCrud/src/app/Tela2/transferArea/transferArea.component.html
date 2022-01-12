@@ -1,16 +1,16 @@
 <div>
-  <div>
-    <span> Seu saldo é: </span>
-    <span> {{balanceUser}} </span>
+  <div class="balance-user">
+    <span class="text-balance"> Seu saldo é:     </span>
+    <span class="balance">R$ {{balanceUser}}  </span>
   </div>
   <div>
     <div>
       <h1>Seleciona uma das opções a seguir:</h1>
     </div>
     <div>
-      <div class="edit-profile">Transferir dinheiro <span>Icone ---></span></div>
-      <div class="edit-profile">Sacar dinheiro <span>Icone ---></span></div>
-      <div class="edit-profile">Depositar dinheiro <span>Icone ---></span></div>
+      <div class="open-modals" (click)="openDialogTransferBalance()">Transferir dinheiro <span>Icone ---></span></div>
+      <div class="open-modals" (click)="openDialogDrawBalance()">Sacar dinheiro <span>Icone ---></span></div>
+      <div class="open-modals" (click)="openDialogDepositBalance()">Depositar dinheiro <span>Icone ---></span></div>
     </div>
   </div>
 </div>
