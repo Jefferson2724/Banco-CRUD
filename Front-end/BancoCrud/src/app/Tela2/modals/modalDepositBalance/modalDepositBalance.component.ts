@@ -11,6 +11,8 @@ import { RotasService } from 'src/app/services/rotas.service';
 })
 export class ModalDepositBalanceComponent implements OnInit {
   dataDepositAction: ModalsActions = {} as ModalsActions;
+  messageError: String;
+  success: boolean;
 
   constructor(
     public dialogRef: MatDialogRef<ModalDepositBalanceComponent>,
@@ -22,13 +24,22 @@ export class ModalDepositBalanceComponent implements OnInit {
     }
   
     depositBalance(balance){
+      this.messageError = undefined;
+
       if(!balance){
+        this.messageError = "Valor não inserido, insira o valor e tente novamente !";
         return;
       }
 
       this.dataDepositAction['_id'] = this.data._id;
       this.dataDepositAction['balance'] = balance;
 
-      this.rotasService.depositBalanceUser(this.dataDepositAction);
+      this.rotasService.depositBalanceUser(this.dataDepositAction).subscribe(
+        Response => {
+            if(Response){
+              this.success = true;
+            }      
+        }
+      );
     }
 }

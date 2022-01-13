@@ -25,12 +25,14 @@ export class TransferAreaComponent implements OnInit {
     const dialogRef = this.dialog.open(ModalTransferBalanceComponent, {
       width: '800px',
       data: {
-        _id: this.id
+        _id: this.id,
+        balance: this.balanceUser
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.router.navigate([`/navegar/${this.id}`])
+      this.router.navigate([`/navegar/${this.id}`]);
+      location.reload();
     });
   }
 
@@ -38,12 +40,14 @@ export class TransferAreaComponent implements OnInit {
     const dialogRef = this.dialog.open(ModalDrawBalanceComponent, {
       width: '600px',
       data: {
-        _id: this.id
+        _id: this.id,
+        balance: this.balanceUser
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.router.navigate([`/navegar/${this.id}`])
+      this.router.navigate([`/navegar/${this.id}`]);
+      location.reload();
     });
   }
 
@@ -51,12 +55,14 @@ export class TransferAreaComponent implements OnInit {
     const dialogRef = this.dialog.open(ModalDepositBalanceComponent, {
       width: '600px',
       data: {
-        _id: this.id
+        _id: this.id,
+        balance: this.balanceUser
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.router.navigate([`/navegar/${this.id}`])
+      this.router.navigate([`/navegar/${this.id}`]);
+      location.reload();
     });
   }
 

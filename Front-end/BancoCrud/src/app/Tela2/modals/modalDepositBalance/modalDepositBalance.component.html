@@ -8,8 +8,14 @@
       <label for="name" class="form-label">Valor para deposito</label>
       <input type="number" class="form-control" name="deposit" id="name" aria-describedby="deposito"
       placeholder="Digita o valor" selected ngModel>
+      <div class="invalid-feedback" *ngIf="messageError != null && messageError != undefined">
+        {{messageError}}
+      </div>
+      <div class="valid-feedback" *ngIf="success == true">
+        Sucesso na ação !
+      </div>
     </div>
-    <button type="button" id="deleteUser" class="btn btn-success" (click)="depositBalance(form.value['deposit'])" mat-dialog-close>
+    <button type="button" id="deleteUser" class="btn btn-success" (click)="depositBalance(form.value['deposit'])">
       Depositar
     </button>
   </form>

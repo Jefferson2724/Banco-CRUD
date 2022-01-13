@@ -12,16 +12,22 @@
             </select>
           </div>
           <div class="col-auto">
-          <label for="id" class="col-form-label">Valor: </label>
+            <label for="id" class="col-form-label">Valor: </label>
+            </div>
+            <div class="col-auto">
+            <input type="number" name="balance" class="form-control" width="500px" 
+            placeholder="Digite o valor" ngModel>
+            <div class="invalid-feedback" *ngIf="messageError != null && messageError != undefined">
+                {{messageError}} 
+            </div>
+            <div class="valid-feedback" *ngIf="success == true">
+                Sucesso na ação !
+            </div>
           </div>
           <div class="col-auto">
-          <input type="number" name="balance" class="form-control" width="500px" 
-          placeholder="Digite o valor" ngModel>
-          </div>
-          <div class="col-auto">
-          <button type="button" id="deleteUser" class="btn btn-success" (click)="transferBalance(form.value['email'], form.value['balance'])" mat-dialog-close>
-             Tranferir Saldo
-          </button>
+            <button type="button" id="deleteUser" class="btn btn-success" (click)="transferBalance(form.value['email'], form.value['balance'])">
+                Tranferir Saldo
+            </button>
           </div>
       </div>
   </form>

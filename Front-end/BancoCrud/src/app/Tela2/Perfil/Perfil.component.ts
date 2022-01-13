@@ -59,7 +59,8 @@ export class PerfilComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.router.navigate([`/navegar/${this.id}`])
+      this.router.navigate([`/navegar/${this.id}`]);
+      location.reload();
     });
   }
 
@@ -74,7 +75,7 @@ export class PerfilComponent implements OnInit {
 
   insertValuesProfiles(dataUser){
     this.name = dataUser.name;
-    this.balance = "5.000.000";
+    this.balance = dataUser.balance;
   }
 
   logout(){

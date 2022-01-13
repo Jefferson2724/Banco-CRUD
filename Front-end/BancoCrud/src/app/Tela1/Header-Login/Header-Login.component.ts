@@ -55,7 +55,6 @@ export class HeaderLoginComponent implements OnInit {
   authorizationLogin() {
     this.authentication.authenticationProfile(this.dataLogin).subscribe(
       response => {
-        debugger;
         if(response == "error") {
           this.error = true;
        } else if(response){

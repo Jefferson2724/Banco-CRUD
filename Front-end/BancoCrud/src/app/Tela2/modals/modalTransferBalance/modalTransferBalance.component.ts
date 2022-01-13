@@ -12,6 +12,8 @@ import { RotasService } from 'src/app/services/rotas.service';
 export class ModalTransferBalanceComponent implements OnInit {
   users:ModalDelete[];
   dataTransfer: ModalTransfer = {} as ModalTransfer;
+  messageError: String;
+  success: boolean;7
 
   constructor(
     public dialogRef: MatDialogRef<ModalTransferBalanceComponent>,
@@ -24,9 +26,15 @@ export class ModalTransferBalanceComponent implements OnInit {
     }
   
     transferBalance(email, balance){
-      debugger;
-      console.log(this.data);
+      this.messageError = undefined;
+
       if(!email || !balance){
+        this.messageError = "Dados não inseridos, insira os dados e tente novamente !";
+        return;
+      }
+
+      if(this.data.balance < balance){
+        this.messageError = "Seu saldo é insuficiente para completar esta ação";
         return;
       }
 
@@ -34,7 +42,13 @@ export class ModalTransferBalanceComponent implements OnInit {
       this.dataTransfer['email'] = email;
       this.dataTransfer['balance'] = balance;
 
-      this.rotasService.transferBalanceUser(this.dataTransfer);
+      this.rotasService.transferBalanceUser(this.dataTransfer).subscribe(
+        Response => {
+            if(Response){
+              this.success = true;
+            }      
+        }
+      );
     }
   
     getUsersData(){

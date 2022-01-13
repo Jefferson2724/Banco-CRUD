@@ -110,7 +110,6 @@ export class RotasService {
   }
 
   transferBalanceUser(dataTransfer:ModalTransfer){
-    debugger;
     let respostaLogin: BehaviorSubject<any> = new BehaviorSubject(undefined);
     let token = this.authentication.getToken();
     const header = {
@@ -134,7 +133,6 @@ export class RotasService {
   }
 
   drawBalanceUser(dataDraw:ModalsActions){
-    debugger;
     let respostaLogin: BehaviorSubject<any> = new BehaviorSubject(undefined);
     let token = this.authentication.getToken();
     const header = {
@@ -158,7 +156,6 @@ export class RotasService {
   }
 
   depositBalanceUser(dataDeposit:ModalsActions){
-    debugger;
     let respostaLogin: BehaviorSubject<any> = new BehaviorSubject(undefined);
     let token = this.authentication.getToken();
     const header = {
