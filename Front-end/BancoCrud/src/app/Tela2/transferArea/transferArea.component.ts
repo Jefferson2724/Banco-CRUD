@@ -23,7 +23,7 @@ export class TransferAreaComponent implements OnInit {
 
   openDialogTransferBalance(){
     const dialogRef = this.dialog.open(ModalTransferBalanceComponent, {
-      width: '800px',
+      width: '1000px',
       data: {
         _id: this.id,
         balance: this.balanceUser

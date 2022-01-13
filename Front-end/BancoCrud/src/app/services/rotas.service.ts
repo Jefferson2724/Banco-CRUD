@@ -119,7 +119,7 @@ export class RotasService {
         })
       }
 
-    this.httpClient.put<any>(`${this.url}/transfer`, dataTransfer, header ).subscribe(
+    this.httpClient.put<any>(`${this.url}/transferring`, dataTransfer, header ).subscribe(
       response => {
         respostaLogin.next(response.body);
       },
@@ -142,7 +142,7 @@ export class RotasService {
         })
       }
 
-    this.httpClient.put<any>(`${this.url}/draw`, dataDraw, header).subscribe(
+    this.httpClient.put<any>(`${this.url}/withdraw`, dataDraw, header).subscribe(
       response => {
         respostaLogin.next(response.body);
       },

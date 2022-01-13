@@ -46,7 +46,7 @@ export class ContaService {
       response => {
         resUser.next(response.body);
       },
-      error => {        
+      error => {       
         console.log("Houve algum erro");
         return;
       }
