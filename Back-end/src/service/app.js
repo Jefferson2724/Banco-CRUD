@@ -10,6 +10,7 @@ class App {
 
     //receber informações via postman
     middlewares() {
+      console.log("acessei aqui");
         this.server.use(express.json());
       }
     
