@@ -30,10 +30,6 @@ export class ModalEditPerfilComponent implements OnInit {
       return;
     }
 
-   /* if (form.value["newPaswwrod"] != form.value["repeatNewPassword"]){
-      console.log("Senhas não coincidem!");
-      return;
-    }*/
     this.setDataForm(form);
 
     this.rotasService.editProfile(this.dadosCadastro);
@@ -54,11 +50,6 @@ export class ModalEditPerfilComponent implements OnInit {
     }else if(form.value["password"] == ""){
       return true;
     }
-  /*  }else if(form.value["newPassword"] == ""){
-      return true;
-    }else if(form.value["repeatNewPassword"] == ""){
-      return true;
-    }*/
 
     return false;
   }

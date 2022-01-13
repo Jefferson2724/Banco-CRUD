@@ -1,9 +1,12 @@
 .open-modals{
+    display: flex;
+    justify-content: space-between;
+
     padding: 20px 80px;
     border: 3px solid black;
 
     font-family:serif;
-    font-size: 20px;
+    font-size: 28px;
 
     font-weight: 700;
     cursor: pointer;
@@ -31,4 +34,8 @@
 
 .text-balance {
     font-size: 50px;
+}
+
+.arrow-spance::before {
+    font-size: 35px;
 }

@@ -6,9 +6,9 @@
   <form #form="ngForm">
       <div class="row g-3 align-items-center inputDelete">
           <div class="input-group mb-3">
-            <select class="form-select form-select-lg mb-3" name="id" ngModel>
-                <option selected>Selecione o id para transferir</option>
-                <option *ngFor="let user of users">{{user._id}}</option>
+            <select class="form-select form-select-lg mb-3" name="email" ngModel>
+                <option selected>Selecione o email para transferir</option>
+                <option *ngFor="let user of users">{{user.email}}</option>
             </select>
           </div>
           <div class="col-auto">
@@ -19,7 +19,7 @@
           placeholder="Digite o valor" ngModel>
           </div>
           <div class="col-auto">
-          <button type="button" id="deleteUser" class="btn btn-success" (click)="transferBalnce(form.value['id'], form.value['balance'], form)" mat-dialog-close>
+          <button type="button" id="deleteUser" class="btn btn-success" (click)="transferBalance(form.value['email'], form.value['balance'])" mat-dialog-close>
              Tranferir Saldo
           </button>
           </div>

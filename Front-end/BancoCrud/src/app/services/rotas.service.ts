@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { dataAccountProfile } from '../models/DadosConta';
-import { ModalDelete } from '../models/modalDelete';
+import { ModalsActions } from '../models/modalsActions';
+import { ModalTransfer } from '../models/modalTransfer';
 import { AuthenticationService } from './authentication.service';
 
 @Injectable({
@@ -89,7 +89,7 @@ export class RotasService {
           'observe': 'response',
           'Authorization': `${token}`
         })
-      }
+    }
 
     this.httpClient.delete<any>(`${this.url}/deleteUser/${id}`, header ).subscribe(
       response => {
@@ -107,5 +107,77 @@ export class RotasService {
   verifyUser(dataUsers, id){
     return dataUsers.filter(
       user => user._id === id);
+  }
+
+  transferBalanceUser(dataTransfer:ModalTransfer){
+    debugger;
+    let respostaLogin: BehaviorSubject<any> = new BehaviorSubject(undefined);
+    let token = this.authentication.getToken();
+    const header = {
+      headers: new HttpHeaders({
+          'observe': 'response',
+          'Authorization': `${token}`
+        })
+      }
+
+    this.httpClient.put<any>(`${this.url}/transfer`, dataTransfer, header ).subscribe(
+      response => {
+        respostaLogin.next(response.body);
+      },
+      error => {
+        console.log("Houve algum erro");
+        return;
+      }
+    );
+  
+    return respostaLogin.asObservable();
+  }
+
+  drawBalanceUser(dataDraw:ModalsActions){
+    debugger;
+    let respostaLogin: BehaviorSubject<any> = new BehaviorSubject(undefined);
+    let token = this.authentication.getToken();
+    const header = {
+      headers: new HttpHeaders({
+          'observe': 'response',
+          'Authorization': `${token}`
+        })
+      }
+
+    this.httpClient.put<any>(`${this.url}/draw`, dataDraw, header).subscribe(
+      response => {
+        respostaLogin.next(response.body);
+      },
+      error => {
+        console.log("Houve algum erro");
+        return;
+      }
+    );
+  
+    return respostaLogin.asObservable();
+  }
+
+  depositBalanceUser(dataDeposit:ModalsActions){
+    debugger;
+    let respostaLogin: BehaviorSubject<any> = new BehaviorSubject(undefined);
+    let token = this.authentication.getToken();
+    const header = {
+      headers: new HttpHeaders({
+          'observe': 'response',
+          'Authorization': `${token}`
+        })
+      }
+
+    this.httpClient.put<any>(`${this.url}/deposit`, dataDeposit, header).subscribe(
+      response => {
+        respostaLogin.next(response.body);
+      },
+      error => {
+        console.log("Houve algum erro");
+        return;
+      }
+    );
+  
+    return respostaLogin.asObservable();
   }
 }
